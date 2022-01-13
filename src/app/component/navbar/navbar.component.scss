@@ -1,0 +1,79 @@
+nav{
+    width: 100vw;
+    background-color: #e27f46;
+}
+
+
+a, a:visited, a:link{
+    color: black;
+}
+a:hover, a:active{
+    color: rgb(87, 87, 87);
+}
+
+
+#add{
+    background: #e27f46;
+    border: solid 1px black;
+    border-radius: 8px;
+
+    &:hover{
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+    }
+}
+
+.modal-body{
+    font-size: 22px;
+}
+
+.modal-body button{
+    background-color: #e27f46;
+    font-weight: 500;
+    color: black;
+}
+
+.modal-body{
+    input[type="text"]{
+        width: 48%;
+    }
+    input[type="number"]{
+        width: 30%;
+        margin-left: 2%;
+    }
+}
+
+
+
+.loader-container{
+  position: fixed;
+  width: 100%;
+  top: 56px;
+  left: 0px;
+  z-index: 99;
+}
+
+
+
+// LG
+@media screen and (max-width: 1199px){
+
+}
+
+// MD
+@media screen and (max-width: 991px){
+
+}
+
+// SM
+@media screen and (max-width: 767px){
+
+}
+
+// XS
+@media screen and (max-width: 575px){
+    .navbar-toggler{
+        margin-right: 5vw;
+    }
+}

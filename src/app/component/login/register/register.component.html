@@ -1,0 +1,27 @@
+<div class="container-fluid my-5">
+  <div class="container border py-5 shadow-lg" style="margin-top: 15vh; margin-bottom: 15vh">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="text-center">Rejestracja</h4>
+      </div>
+      <div class="col-12">
+        <p class="text-center">Zarejestruj się</p>
+      </div>
+      <form ngNativeValidate ngForm>
+        <div class="col-12 mb-3">
+          <input #email type="email" class="form-control" id="email" placeholder="Email" name="email">
+        </div>
+        <div class="col-12 mb-3">
+          <input #password type="password" class="form-control" id="pwd" placeholder="Hasło" name="pswd">
+        </div>
+        <div class="col-12 mb-3">
+          <input #password_repeat type="password" class="form-control" id="pwdrepeat" placeholder="Powtórz hasło" name="pswd">
+        </div>
+        <div class="col-12 justify-content-center text-center">
+          <button type="submit" style="background-color: #e27f46" class="btn btn"> Zarejestruj </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

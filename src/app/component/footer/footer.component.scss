@@ -1,0 +1,67 @@
+*{
+    font-size: 14px;
+}
+
+
+
+.container-fluid{
+    background-color: #e27f46;
+
+    p{
+        margin:0;
+    }
+
+    .title{
+        font-size: 18px;
+    }
+
+    .copyright{
+        background-color: #d16f36;
+    }
+
+}
+
+.categories p{
+    cursor: pointer;
+    width: 25%;
+}
+
+.versions p{
+    cursor: pointer;
+    width: 25%;
+}
+
+
+
+
+// LG
+@media screen and (max-width: 1199px){
+
+}
+
+// MD
+@media screen and (max-width: 991px){
+
+    .categories p{
+        font-size: 11px;
+    }
+}
+
+// SM
+@media screen and (max-width: 767px){
+    .categories p{
+        width: 33.3%;
+    }
+}
+
+// XS
+@media screen and (max-width: 575px){
+
+    .categories p{
+        width: 50%;
+    }
+    .versions p{
+        cursor: pointer;
+        width: 50%;
+    }
+}

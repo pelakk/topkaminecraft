@@ -1,0 +1,70 @@
+
+
+<!-- SPACER -->
+<div class="container-fluid my-3"></div>
+
+
+<app-header></app-header>
+
+
+<!-- SPACER -->
+<div class="container-fluid my-4 py-4 d-none d-sm-block"></div>
+<div class="container-fluid my-4"></div>
+
+
+<!-- TRYBY -->
+<div *ngIf="completeServer.categories.length != 0" class="container text-center av-modes">
+  <p class="mb-0" style="font-size: 26px"> Tryby gry dostępne na serwerze</p>
+  <div class="row justify-content-center">
+    <div class="col-lg-3 col-md-4 col-sm-5 col-12" *ngFor="let category of completeServer.categories">
+      <div class="row px-2">
+        <a href="{{category}}" class="col-12 p-2 border gm" target="_blank" 
+            style="text-decoration:none;color:#000000;cursor:pointer;" [routerLink]="['/category', category]">
+          {{category}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPACER -->
+<div class="container-fluid my-4 py-4"></div>
+<div class="container-fluid my-4 d-none d-sm-block"></div>
+
+<!-- LINKI -->
+<div *ngIf="!isEmpty()" class="container text-center av-modes">
+  <p class="mb-0" style="font-size: 26px"> Strony serwera</p>
+  <div class="row justify-content-center">
+    <ng-template ngFor let-url [ngForOf]="usefulUrls | keyvalue" let-i="index">
+      <div class="col-lg-3 col-md-4 col-sm-5 col-12">
+        <div class="row px-2">
+          <a href="{{url.value}}" class="col-12 p-2 border gm" target="_blank" style="text-decoration:none;color:#000000;cursor:pointer;">{{url.key.toUpperCase()}}</a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+
+<!-- SPACER -->
+<div class="container-fluid my-4 py-4"></div>
+<div class="container-fluid my-4"></div>
+
+<!--ERROR-->
+
+<div class="alert row justify-content-center p-0 mb-4 mt-0" *ngIf="!(recordsLength > 12)">
+  <h1 class="text-center p-4">Nie możemy jeszcze przygotować statystyk dla tego serwera.</h1>
+</div>
+
+<!-- CHART -->
+
+<ng-template [ngIf]="recordsLength > 12">
+  <app-chart [completeServer]="completeServer"></app-chart>
+</ng-template>
+
+<!-- SPACER -->
+<div class="container-fluid my-4"></div>
+<div class="container-fluid my-4"></div>
+
+<div>
+</div>

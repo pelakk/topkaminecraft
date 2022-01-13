@@ -1,0 +1,51 @@
+
+<div class="container mt-4">
+  <h1 class="text-center" style="font-size: 20px;">Lista najlepszych serwerów Minecraft</h1>
+  <h2 class="text-center" style="font-size: 16px;">Topkaminecraft.pl - wiodące serwery Minecraft w Polsce.</h2>
+</div>
+
+<div class="container justify-content-center search">
+    Wyszukaj serwer <input type="text" #search (keyup)="send(search.value)">
+    <button type="button" class="btn btnCollapse" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+        <i class="fas fa-bars" style="color: black"></i>
+    </button>
+</div>
+
+
+
+<div class="container justify-content-center" style="margin-top: 1%;">
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <div class="card border border-light shadow-sm">
+        <div class="card-body">
+          <div class="row">
+            <form id="searchForm" (ngSubmit)="search1()">
+              <div class="row px-4">
+                <div class="col-6">
+                  <p>Wersje</p>
+                  <div class="row" id="version-list">
+                    <p class="pl-4 m-0 version" *ngFor="let checkbox of checkBoxesVersions"><input
+                      class="form-check-input"
+                      (change)="changeSelection(checkbox)" type="checkbox" value="{{checkbox.name}}"
+                      name="version"/> {{formatVersion(checkbox.name)}}</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <p>Tryby</p>
+                  <div class="row">
+                    <p class="pl-4 m-0 tr" *ngFor="let mode of checkBoxesModes">
+                      <input class="form-check-input"(change)="changeSelection(mode)" type="checkbox" value="{{mode.name}}" name="mode"/> 
+                      {{mode.name}}
+                    </p>
+                  </div>
+                </div>
+                <div class="row my-2"></div>
+                <div class="col">
+                  <button class="btn searchBtn float-end">Szukaj</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

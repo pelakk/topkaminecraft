@@ -1,0 +1,45 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '12.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm install -g @angular/cli
+      npm install
+      ng build --prod
+    displayName: 'npm install and build'
+
+  - task: DownloadSecureFile@1
+    name: htaccess
+    displayName: '.htaccess'
+    inputs:
+      secureFile: '.htaccess'
+
+  - script: |
+      echo Installing $(htaccess.secureFilePath) to the trusted CA directory...
+      sudo chown root:root $(htaccess.secureFilePath)
+      sudo chmod a+r $(htaccess.secureFilePath)
+      mv $(htaccess.secureFilePath) /home/vsts/work/1/s/dist/mclist
+
+
+
+  - task: CopyFilesOverSSH@0
+    inputs:
+      sshEndpoint: 'sshvps'
+      contents: '/dist/mclist/**'
+      targetFolder: '/var/www/html/mclist'
+      readyTimeout: '20000'
+      flattenFolders: true
+      cleanTargetFolder: true

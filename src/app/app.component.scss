@@ -1,0 +1,25 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+  width: 100vw;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #e27f46;
+  }
+
+  ::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+  }
+
+  ::ng-deep .mat-progress-bar {
+    border-radius: 2px;
+  }
+
+.content{
+  margin-top:64px;
+}

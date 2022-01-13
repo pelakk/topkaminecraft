@@ -1,0 +1,59 @@
+<div class="container main">
+  <app-loading-template *ngIf="(isLoading$ | async) && (totalServers$ | async) === 0"></app-loading-template>
+
+  <div class="container-fluid " *ngIf="!(isLoading$ | async) && ((totalServers$ | async) === 0)">
+    <h2 class="text-center alert">Nie znaleziono serwera z wybranym filtrem!</h2>
+  </div>
+
+  <ng-container *ngIf="(totalServers$ | async) as totalServers">
+    <ng-container *ngIf="(serverList$ | async) as serverList">
+
+
+      <div class="container" *ngIf="serverList.length > 0">
+        <div class="container-fluid d-none d-md-block">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-2 col-md-2"></div>
+              <div class="col-xl-5 col-lg-5 col-md-5 align-self-center">Informacje o serwerze</div>
+              <div class="col-xl-2 col-lg-2 col-md-2 align-self-center text-center">Wersja</div>
+              <div class="col-xl-2 col-lg-2 col-md-2 align-self-center text-end pr-4">Online</div>
+              <div class="col-xl-1 col-lg-1 col-md-1 align-self-center text-end pr-4">Like</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid list">
+        <div class="container"
+             *ngFor="let server of serverList | paginate: {itemsPerPage: 40, currentPage: page, totalItems: totalServers}; let i = index">
+
+          <div class="container d-none d-md-block" *ngIf="numberOfPremium === i">
+            <div class="row">
+              <div class="col-xl-2 col-md-2"></div>
+              <div class="col-xl-5 col-lg-5 col-md-5 align-self-center">Informacje o serwerze</div>
+              <div class="col-xl-2 col-lg-2 col-md-2 align-self-center text-center">Wersja</div>
+              <div class="col-xl-2 col-lg-2 col-md-2 align-self-center text-end pr-4">Online</div>
+              <div class="col-xl-1 col-lg-1 col-md-1 align-self-center text-end pr-4">Like</div>
+            </div>
+          </div>
+
+          <a [routerLink]="['/server', server.id]" style="text-decoration: none; color: inherit">
+            <app-server-block [server]="server"></app-server-block>
+          </a>
+
+        </div>
+      </div>
+
+
+
+
+      <div class="d-flex justify-content-center" *ngIf="totalServers > 0">
+        <pagination-controls previousLabel="Poprzedni" nextLabel="Kolejny"
+                             (pageChange)="pageChangedEvent($event)"
+        ></pagination-controls>
+      </div>
+
+    </ng-container>
+  </ng-container>
+
+</div>

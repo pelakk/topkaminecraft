@@ -1,0 +1,85 @@
+<!-- SPACER -->
+<div class="row my-3"></div>
+
+<div class="container text-center">
+  <h3>Skontaktuj się z nami</h3>
+</div>
+
+<!-- SPACER -->
+<div class="row my-3"></div>
+
+<div class="container">
+
+  <ng-container [ngSwitch]="status">
+    <div *ngSwitchCase="0">
+
+      <!-- Bootstrap 5 starter form -->
+      <form [formGroup]="recaptcha" ngNativeValidate (ngSubmit)="captchaElem.execute()" id="contactForm">
+        <!-- Email address input -->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+              <label class="form-label" for="emailAddress">Adres email</label>
+              <input class="form-control" id="emailAddress" type="email" placeholder="Email Address"
+                     data-sb-validations="required, email" #topic required>
+              <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email jest wymagany</div>
+              <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email jest niepoprawny</div>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+        </div>
+
+        <!-- SPACER -->
+        <div class="row my-3"></div>
+
+        <!-- Message input -->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+              <label class="form-label" for="message">Wiadomość</label>
+              <textarea class="form-control" id="message" type="text" placeholder="Wiadomosc" style="height: 10rem;"
+                        data-sb-validations="required" #content required></textarea>
+              <div class="invalid-feedback" data-sb-feedback="message:required">Wiadomość jest wymagana</div>
+            </div>
+            <div class="col-lg-2"></div>
+          </div>
+        </div>
+
+        <!-- SPACER -->
+        <div class="row my-3"></div>
+
+        <!-- Form submit button -->
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="row">
+              <div class="col-12 text-center justify-content-center">
+                <button class="btn btn-lg m-3 d-none d-sm-block mx-auto" type="submit">Wyślij</button>
+                <button class="btn btn-lg m-3 d-block d-sm-none mx-auto" type="submit">Wyślij</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <ngx-invisible-recaptcha formControlName="recaptcha"
+                                 (success)="sendEmail(topic.value, content.value, captchaElem)"
+                                 #captchaElem [siteKey]="siteKey"></ngx-invisible-recaptcha>
+      </form>
+
+    </div>
+    <div *ngSwitchCase="1" class="alert alert-success" role="alert">
+      Udało się wysłać maila!
+    </div>
+    <div *ngSwitchCase="2" class="alert alert-danger" role="alert">
+      Nie udało się wysłać maila!
+    </div>
+  </ng-container>
+
+
+</div>
+
+<!-- SPACER -->
+<div class="row my-3"></div>

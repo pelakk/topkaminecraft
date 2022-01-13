@@ -1,0 +1,35 @@
+.serv-item{
+    background-color: #c4c4c494;
+    border-radius: 22px;
+    cursor: pointer;
+    min-height: 80px;
+}
+
+.serv-item:hover{
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+}
+
+.main{
+    min-height: 200px;
+}
+
+:host ::ng-deep .ngx-pagination {
+    a:hover{
+        border-radius: 20% !important;
+    }
+
+    .pagination-previous a:hover{
+        border-radius: 6px !important;
+    }
+    .pagination-next a:hover{
+        border-radius: 6px !important;
+    }
+
+    .current{
+        background: none;
+        background: #e27f46 !important;
+        border-radius: 20% !important;
+    }
+}

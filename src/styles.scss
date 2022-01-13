@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+.spinner-border{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.btn:focus, .btn:active{
+  outline: none !important;
+  box-shadow: none;
+}

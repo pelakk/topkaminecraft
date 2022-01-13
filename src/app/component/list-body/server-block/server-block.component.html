@@ -1,0 +1,34 @@
+<div class="row p-2 my-3 serv-item"
+     [ngStyle]="{
+        'background-color': server.premiumTimeExpire>0 ? 'bisque' : ''
+     }"
+     style="border-radius: 22px;">
+  <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-4 float-start align-self-center server-img">
+    <img src="{{server.image}}" alt="najlepszy serwer minecraft w polsce {{server.name | portCut}}" width="64" height="64" style="border-radius: 10px;">
+  </div>
+  <div
+    class="col-xl-2 col-lg-2 col-md-3 col-sm-5 col-8 float-start align-self-center font-weight-bold p-0 server-name text-center">
+    {{server.name | portCut}}
+  </div>
+  <div class="container spacer p-0 m-0 mt-1 d-sm-none" style="height: 1px;"></div>
+  <div class="col-xl-4 col-lg-4 col-md-2 col-sm-5 col-12 float-start align-self-center server-motd p-0 m-0" id="motdPremium"
+       style="font-family:Segoe UI Symbol; white-space: pre-line;">
+    {{server.motd}}
+  </div>
+  <div class="container spacer p-0 m-0 mt-1 d-md-none " style="height: 1px;"></div>
+  <div
+    class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-xs-1 float-start align-self-center text-center server-version">
+    <p class="d-md-none m-0">wersja: </p>{{server.friendlyVersionName | nullToDotted}}
+  </div>
+  <div
+    class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-xs-1 float-start align-self-center text-end server-online" style="padding-right: 26px;">
+    <p class="d-md-none m-0">online: </p>{{server.online}}/{{server.maxPlayers}}
+    <div class="float-end" placement="top" ngbTooltip="Ten serwer jest {{server.isActive ? 'online' : 'offline'}} (stan z {{lastFullHour()}}:00)"
+    [ngClass]="server.isActive ? 'online' : 'offline'"></div>
+  </div>
+  <div
+    class="col-xl-1 col-lg-1 col-md-1 col-sm-4 col-xs-1 float-start align-self-center text-center server-likes">
+    <p class="d-md-none m-0">like: </p>{{server.likes}}
+  </div>
+</div>
+

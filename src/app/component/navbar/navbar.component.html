@@ -1,0 +1,123 @@
+
+<nav class="navbar navbar-expand-md fixed-top">
+    <a class="navbar-brand" style="cursor: pointer" (click)="reloadComponent()" [routerLink]="['/']">TOPKAMINECRAFT.PL</a>
+
+    <button class="navbar-toggler hidden-sm-up" style="border: 2px solid black;" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse justify-content-center" id="navbarsDefault">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer" (click)="reloadComponent()" [routerLink]="['/']">Lista</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="kontakt">Kontakt</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://discord.gg/4RyXeBYcTx" target="_blank">Discord</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  routerLink="faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="regulamin">Regulamin</a>
+        </li>
+        <li class="nav-item">
+            <button class="btn float-start d-block d-sm-none" id="add" (click)="triggerRecommendModal(modalData)"><i class="fas fa-plus"></i> Dodaj serwer</button>
+
+            <ng-template #modalData let-modal>
+                <div class="modal-header">
+                    <h6 class="modal-title" id="modal-basic-title">Dodaj swój serwer do listy</h6>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Podaj adres serwera, oraz opcjonalnie port</p>
+
+                    <form ngNativeValidate (ngSubmit)="addServer(ip.value, port.value)">
+                        <div class="row">
+                            <div class="container">
+                                <input type="text" maxlength="16" class="form-control float-start" minlength="4"  placeholder="Adres" required id="ipInput" #ip required>
+                                <input type="number" maxlength="5" class="form-control float-start"  placeholder="Port" id="portInput" #port>
+                            </div>
+                        </div>
+
+                        <p id="response"></p>
+
+                        <button type="submit" class="btn" style="width:30%;">
+                            <div class="spinner-border float-start m-0 p-0" role="status" *ngIf="isLoading()">
+                                <span class="sr-only"></span>
+                            </div>
+                            Dodaj
+                        </button>
+                    </form>
+                    <div class="separator" style="height: 20px"></div>
+
+                    <ng-container [ngSwitch]="addServerStatus">
+                        <div *ngSwitchCase="true" class="alert alert-success" role="alert">
+                          Udało się dodać serwer! Twoja strona zostanie odświeżona.
+                        </div>
+                        <div *ngSwitchCase="false" class="alert alert-warning" role="alert">
+                          Błąd dodawania serwera. Sprawdź wpisywane informacje, albo sprawdź czy serwer jest już dodany.
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-template>
+        </li>
+      </ul>
+    </div>
+    <button class="btn float-end mx-5 d-none d-sm-block" id="add" (click)="triggerRecommendModal(modalData)"><i class="fas fa-plus"></i> Dodaj serwer</button>
+
+    <ng-template #modalData let-modal>
+        <div class="modal-header">
+            <h6 class="modal-title" id="modal-basic-title">Dodaj swój serwer do listy</h6>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Podaj adres serwera, oraz opcjonalnie port</p>
+
+            <form ngNativeValidate (ngSubmit)="addServer(ip.value, port.value)">
+                <div class="row">
+                    <div class="container">
+                        <input type="text" maxlength="16" class="form-control float-start" minlength="4"  placeholder="Adres" required id="ipInput" #ip required>
+                        <input type="number" maxlength="5" class="form-control float-start"  placeholder="Port" id="portInput" #port>
+                    </div>
+                </div>
+
+                <p id="response"></p>
+
+                <button type="submit" class="btn btn-submit" style="width:30%;">
+                    <div class="spinner-border float-start m-0 p-0" role="status" *ngIf="isLoading()">
+                        <span class="sr-only"></span>
+                    </div>
+                    Dodaj
+                </button>
+            </form>
+            <div class="separator" style="height: 20px"></div>
+            <ng-container [ngSwitch]="addServerStatus">
+                <div *ngSwitchCase="true" class="alert alert-success" role="alert">
+                  Udało się dodać serwer! Zostaniesz przekierowany na strone serwera.
+                </div>
+                <div *ngSwitchCase="false" class="alert alert-warning" role="alert">
+                  Błąd dodawania serwera. Sprawdź wpisywane informacje, albo sprawdź czy serwer jest już dodany.
+                </div>
+            </ng-container>
+        </div>
+    </ng-template>
+
+  </nav>
+
+  <div class="row m-0" style="height:64px;"></div>
+
+
+
+
+
+
+
+<div *ngIf="getLoader().isLoading | async" class="loader-container m-0" style="margin-top: -2px;margin-bottom: 24px;">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>

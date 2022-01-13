@@ -1,0 +1,135 @@
+.chart{
+  box-shadow: 0px 0px 1px 0px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,1);
+  border-radius: 4px;
+}
+
+.av-modes{
+  font-size: 22px;
+  font-weight: 500;
+
+  .row{
+    margin-top: 5%;
+
+    ul{
+      list-style: none;
+      padding-left: 0;
+    }
+
+  }
+
+}
+
+.like-motd{
+  color: black;
+
+  button{
+    border: solid 1px #D96F32;
+    background-color: #D96F32;
+  }
+}
+
+.chart{
+  max-width: 900px;
+  height: 500px;
+}
+
+.gm{
+  border-radius: 50px;
+  background-color: #c4c4c413;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.like-block .btn{
+  font-size: 16px;
+}
+
+.modal-body form .row .col-4 button{
+  background-color: #e27f46;
+  font-weight: 500;
+  color: black;
+}
+.btn-nextStep, .promote-btn{
+  background-color: #e27f46;
+  font-weight: 500;
+  color: black;
+}
+
+.btn-nextStep:hover{
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+}
+
+
+.day-pack{
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 18px;
+  height: 160;
+}
+
+.day-pack:hover{
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+  cursor: pointer;
+}
+
+.gm{
+  font-size: 17px;
+}
+
+@media screen and (max-width: 767px){
+  .gm{
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 575px){
+  .gm{
+    font-size: 16px;
+  }
+  .like-block .btn{
+    font-size: 12px;
+  }
+  .btn-promote{
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 368){
+  .like-block .btn{
+    font-size: 12px;
+  }
+  .btn-promote{
+    font-size: 12px;
+  }
+}
+
+.form{
+  display: none;
+}
+
+#priceInput{
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-left: 18%;
+  width: 100%;
+}
+
+.form-group > input, input:active, input:focus, input:scope{
+  border: black 1px solid;
+  box-shadow: none;
+}
+
+.form-group input[type="checkbox"]:checked{
+  background:#e27f46;
+  border: #e27f46;
+  box-shadow: none;
+}

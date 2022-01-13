@@ -1,0 +1,36 @@
+
+<div class="container-fluid">
+
+    <div class="container mt-md-4 py-4">
+        <div class="my-2 pb-2 w-100 text-center">
+            <p style="font-size: 20px; font-weight: 600;">WERSJE</p>
+        </div>
+        <div class="row versions">
+            <p class="my-1 text-center" *ngFor="let version of versions" >
+              <a [routerLink]="['/version', version]" style="text-decoration: none; color: inherit">
+              Serwery {{formatVersion(version)}}
+              </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="container mt-md-4 py-4">
+        <div class="my-2 pb-2 w-100 text-center">
+            <p style="font-size: 20px; font-weight: 600;">TRYBY</p>
+        </div>
+        <div class="row categories">
+            <p class="my-1 text-center" *ngFor="let category of global_categories" >
+              <a [routerLink]="['/category', category]" style="text-decoration: none; color: inherit">
+              Serwery {{category}}
+              </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row copyright">
+        <div class="container text-center py-2">
+          <a href="https://otherkey.pl/" target="_blank" style="color: inherit; text-decoration: none">©Copyright 2021 Otherkey.pl</a>
+        </div>
+    </div>
+
+</div>
